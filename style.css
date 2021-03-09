@@ -28,35 +28,34 @@ body {
   width: 300px;
   margin: 0 auto;
   font-size: 0;
+  background-color: #000000;
 }
 
 .calc {
-    background-color: #333333;
-    font-size: 32px;
-    height: 80px;
-    line-height: 80px;
-    text-align: right;
-    padding-right: 10px;
+  background-color: #333333;
+  font-size: 32px;
+  height: 80px;
+  line-height: 80px;
+  text-align: right;
+  padding-right: 10px;
 }
 
 .panel {
-    border: 1px solid #000000;
-    background-color: #999999;
-    width: 75px;
-    height: 75px;
+  background-color: #999999;
+  width: 75px;
+  height: 75px;
 }
 
 .panel.black {
-    background-color: #4b555c;
+  background-color: #4b555c;
 }
 
 .panel.orange {
-    background-color: #ffa500;
+  background-color: #ffa500;
 }
 
-
 @media screen and (max-width: 480px) {
-    .wrapper {
-        width: 100%;
-      }
+  .wrapper {
+    width: 100%;
+  }
 }
