@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  appearance: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
