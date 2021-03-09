@@ -54,6 +54,10 @@ body {
   background-color: #ffa500;
 }
 
+.panel.long {
+  width: 150px;
+}
+
 @media screen and (max-width: 480px) {
   .wrapper {
     width: 100%;
