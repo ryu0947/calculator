@@ -12,6 +12,7 @@ button {
   background: none;
   border: none;
   appearance: none;
+  outline: none;
   padding: 0;
   cursor: pointer;
   color: #ffffff;
@@ -44,6 +45,10 @@ body {
   background-color: #999999;
   width: 75px;
   height: 75px;
+}
+
+.panel:active {
+    opacity: 0.8;
 }
 
 .panel.black {
