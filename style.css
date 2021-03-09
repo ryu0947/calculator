@@ -26,6 +26,24 @@ body {
   margin: 0 auto;
 }
 
+.calc {
+    background-color: #333333;
+}
+
+.panel {
+    border: 1px solid #000000;
+    background-color: #999999;
+}
+
+.panel.black {
+    background-color: #4b555c;
+}
+
+.panel.orange {
+    background-color: #ffa500;
+}
+
+
 @media screen and (max-width: 480px) {
     .wrapper {
         width: 100%;
