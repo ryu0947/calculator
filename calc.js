@@ -6,12 +6,12 @@ let countUp = 1;
 
 numPanels.forEach((numPanel) => {
   numPanel.addEventListener("click", () => {
-    if (countUp <= 10) {
-      countUp++;
+    if (countUp < 10) {
       if (calc.textContent === "0") {
         calc.textContent = numPanel.value;
       } else {
         calc.textContent += numPanel.value;
+        countUp++;
       }
     }
   });
