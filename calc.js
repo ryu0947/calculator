@@ -36,8 +36,7 @@ reset.addEventListener("click", () => {
 
 plus.addEventListener("click", () => {
   plus.classList.add("click");
-  sum += Number(showNumber.textContent);
-  console.log(sum);
+  sum = Number(showNumber.textContent);
   flag = true;
 });
 
