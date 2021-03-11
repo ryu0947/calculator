@@ -44,12 +44,6 @@ body {
   padding-right: 10px;
 }
 
-.error {
-  opacity: 0;
-  font-size: 24px;
-  padding-right: 10px;
-}
-
 .panel {
   background-color: #999999;
   width: 75px;
