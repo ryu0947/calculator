@@ -21,6 +21,7 @@ numPanels.forEach((numPanel) => {
       } else {
         showNumber.textContent += numPanel.value;
       }
+      flag = false;
       countUp++;
     } else {
       showNumber.textContent = "error";
@@ -33,11 +34,13 @@ reset.addEventListener("click", () => {
     showNumber.textContent = "0";
     sum = 0;
     countUp = 0;
+    flag = false;
     plus.classList.remove("click");
   } else {
     showNumber.textContent = "0";
     reset.textContent = "AC";
     countUp = 0;
+    flag = false;
   }
 });
 
@@ -45,6 +48,7 @@ plus.addEventListener("click", () => {
   plus.classList.add("click");
   sum = Number(showNumber.textContent);
   flag = true;
+  countUp = 0;
 });
 
 equal.addEventListener("click", () => {
@@ -52,8 +56,14 @@ equal.addEventListener("click", () => {
 });
 
 function addition() {
-  sum += Number(showNumber.textContent);
-  showNumber.textContent = sum;
-  plus.classList.remove("click");
-  sum = 0;
+  if (showNumber.textContent.length < 10) {
+    sum += Number(showNumber.textContent);
+    showNumber.textContent = sum;
+    plus.classList.remove("click");
+    sum = 0;
+    flag = true;
+  } else {
+    showNumber.textContent = "error";
+    plus.classList.remove("click");
+  }
 }
