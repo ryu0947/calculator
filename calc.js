@@ -8,7 +8,7 @@ const minus = document.getElementById("minus");
 const mult = document.getElementById("mult");
 const divided = document.getElementById("divided");
 const equal = document.getElementById("equal");
-let countUp = 1;
+let countUp = 0;
 let sum = 0;
 let flag = false;
 
@@ -20,8 +20,8 @@ numPanels.forEach((numPanel) => {
         showNumber.textContent = numPanel.value;
       } else {
         showNumber.textContent += numPanel.value;
-        countUp++;
       }
+      countUp++;
     } else {
       showNumber.textContent = "error";
     }
@@ -29,9 +29,16 @@ numPanels.forEach((numPanel) => {
 });
 
 reset.addEventListener("click", () => {
-  showNumber.textContent = "0";
-  reset.textContent = "AC";
-  countUp = 1;
+  if (reset.textContent === "AC") {
+    showNumber.textContent = "0";
+    sum = 0;
+    countUp = 0;
+    plus.classList.remove("click");
+  } else {
+    showNumber.textContent = "0";
+    reset.textContent = "AC";
+    countUp = 0;
+  }
 });
 
 plus.addEventListener("click", () => {
@@ -41,12 +48,12 @@ plus.addEventListener("click", () => {
 });
 
 equal.addEventListener("click", () => {
-    addition();
+  addition();
 });
 
 function addition() {
-    sum += Number(showNumber.textContent);
-    showNumber.textContent = sum;
-    plus.classList.remove("click");
-    sum = 0;
+  sum += Number(showNumber.textContent);
+  showNumber.textContent = sum;
+  plus.classList.remove("click");
+  sum = 0;
 }
