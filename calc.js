@@ -8,9 +8,10 @@ const minus = document.getElementById("minus");
 const mult = document.getElementById("mult");
 const divided = document.getElementById("divided");
 const equal = document.getElementById("equal");
+
 let countUp = 0;
 let sum = 0;
-let flag = false;
+let flag;
 
 numPanels.forEach((numPanel) => {
   numPanel.addEventListener("click", () => {
@@ -21,11 +22,11 @@ numPanels.forEach((numPanel) => {
       } else {
         showNumber.textContent += numPanel.value;
       }
-      flag = false;
       countUp++;
     } else {
       showNumber.textContent = "error";
     }
+    flag = false;
   });
 });
 
