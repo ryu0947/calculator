@@ -2,7 +2,7 @@
 
 const showNumber = document.getElementById("show-number");
 const numPanels = document.querySelectorAll(".num");
-const reset = document.getElementById("clear");
+const clear = document.getElementById("clear");
 const plus = document.getElementById("plus");
 const minus = document.getElementById("minus");
 const mult = document.getElementById("mult");
@@ -15,7 +15,7 @@ let flag;
 
 numPanels.forEach((numPanel) => {
   numPanel.addEventListener("click", () => {
-    reset.textContent = "C";
+    clear.textContent = "C";
     if (countUp < 10) {
       if (showNumber.textContent === "0" || flag === true) {
         showNumber.textContent = numPanel.value;
@@ -30,7 +30,7 @@ numPanels.forEach((numPanel) => {
   });
 });
 
-reset.addEventListener("click", () => {
+clear.addEventListener("click", () => {
   if (reset.textContent === "AC") {
     showNumber.textContent = "0";
     sum = 0;
