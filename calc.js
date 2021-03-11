@@ -2,7 +2,7 @@
 
 const showNumber = document.getElementById("show-number");
 const numPanels = document.querySelectorAll(".num");
-const reset = document.getElementById("ac");
+const reset = document.getElementById("clear");
 const plus = document.getElementById("plus");
 const minus = document.getElementById("minus");
 const mult = document.getElementById("mult");
