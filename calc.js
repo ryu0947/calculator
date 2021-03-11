@@ -13,7 +13,6 @@ const equal = document.getElementById("equal");
 let countUp = 0;
 let sum = 0;
 let isPush;
-let isPointPush;
 
 numPanels.forEach((numPanel) => {
   numPanel.addEventListener("click", () => {
@@ -38,22 +37,22 @@ clear.addEventListener("click", () => {
     sum = 0;
     countUp = 0;
     isPush = false;
-    isPointPush = false;
+    point.disabled = false;
     plus.classList.remove("click");
   } else {
     showNumber.textContent = "0";
     clear.textContent = "AC";
     countUp = 0;
     isPush = false;
-    isPointPush = false;
+    point.disabled = false;
   }
 });
 
 point.addEventListener("click", () => {
-  if (isPointPush === true) {
+  if (point.disabled === true) {
     return;
   }
-  isPointPush = true;
+  point.disabled = true;
   showNumber.textContent += point.value;
 });
 
@@ -61,7 +60,7 @@ plus.addEventListener("click", () => {
   plus.classList.add("click");
   sum = Number(showNumber.textContent);
   isPush = true;
-  isPointPush = false;
+  point.disabled = false;
   countUp = 0;
 });
 
