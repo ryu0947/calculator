@@ -67,3 +67,7 @@ body {
 .panel.long {
   width: 151px;
 }
+
+.click {
+    border: 1px solid #000000;
+}

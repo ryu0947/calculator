@@ -31,4 +31,5 @@ reset.addEventListener("click", () => {
 
 plus.addEventListener('click', () => {
     sum += Number(showNumber.textContent);
+    plus.classList.toggle('click');
 });
