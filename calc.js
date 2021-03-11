@@ -35,8 +35,19 @@ reset.addEventListener("click", () => {
 });
 
 plus.addEventListener("click", () => {
-  plus.classList.toggle("click");
+  plus.classList.add("click");
   sum += Number(showNumber.textContent);
+  console.log(sum);
   flag = true;
 });
 
+equal.addEventListener("click", () => {
+    addition();
+});
+
+function addition() {
+    sum += Number(showNumber.textContent);
+    showNumber.textContent = sum;
+    plus.classList.remove("click");
+    sum = 0;
+}
