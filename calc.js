@@ -13,6 +13,7 @@ const equal = document.getElementById("equal");
 let countUp = 0;
 let sum = 0;
 let isPush;
+let isPointPush;
 
 numPanels.forEach((numPanel) => {
   numPanel.addEventListener("click", () => {
@@ -28,6 +29,7 @@ numPanels.forEach((numPanel) => {
       showNumber.textContent = "error";
     }
     isPush = false;
+    isPointPush = false;
   });
 });
 
@@ -37,6 +39,7 @@ clear.addEventListener("click", () => {
     sum = 0;
     countUp = 0;
     isPush = false;
+    isPointPush = false;
     point.disabled = false;
     plus.classList.remove("click");
   } else {
@@ -44,6 +47,7 @@ clear.addEventListener("click", () => {
     clear.textContent = "AC";
     countUp = 0;
     isPush = false;
+    isPointPush = false;
     point.disabled = false;
   }
 });
@@ -52,8 +56,15 @@ point.addEventListener("click", () => {
   if (point.disabled === true) {
     return;
   }
+
+  if (!isPointPush) {
+    showNumber.textContent += ".";
+  } else {
+    countUp = 1;
+    isPush = false;
+    showNumber.textContent = "0.";
+  }
   point.disabled = true;
-  showNumber.textContent += point.value;
 });
 
 plus.addEventListener("click", () => {
@@ -62,6 +73,7 @@ plus.addEventListener("click", () => {
   isPush = true;
   point.disabled = false;
   countUp = 0;
+  isPointPush = true;
 });
 
 equal.addEventListener("click", () => {
