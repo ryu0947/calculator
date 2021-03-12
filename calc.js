@@ -11,7 +11,7 @@ const point = document.getElementById("point");
 const equal = document.getElementById("equal");
 
 let countUp = 0;
-let sum = 0;
+let calc = 0;
 let isPush;
 let isPointPush;
 
@@ -36,7 +36,7 @@ numPanels.forEach((numPanel) => {
 clear.addEventListener("click", () => {
   if (clear.textContent === "AC") {
     showNumber.textContent = "0";
-    sum = 0;
+    calc = 0;
     countUp = 0;
     isPush = false;
     isPointPush = false;
@@ -69,7 +69,7 @@ point.addEventListener("click", () => {
 
 plus.addEventListener("click", () => {
   plus.classList.add("click");
-  sum = Number(showNumber.textContent);
+  calc = Number(showNumber.textContent);
   isPush = true;
   point.disabled = false;
   countUp = 0;
@@ -82,13 +82,21 @@ equal.addEventListener("click", () => {
 
 function addition() {
   if (showNumber.textContent.length < 10) {
-    sum += Number(showNumber.textContent);
-    showNumber.textContent = sum;
+    calc += Number(showNumber.textContent);
+    showNumber.textContent = calc;
     plus.classList.remove("click");
-    sum = 0;
+    calc = 0;
     isPush = true;
   } else {
     showNumber.textContent = "error";
     plus.classList.remove("click");
+  }
+
+  function subtraction() {
+    calc -= Number(showNumber.textContent);
+    showNumber.textContent = calc;
+    plus.classList.remove("click");
+    calc = 0;
+    isPush = true;
   }
 }
