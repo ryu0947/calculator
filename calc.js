@@ -14,6 +14,7 @@ let countUp = 0;
 let calc = 0;
 let isPush;
 let isPointPush;
+let isMinusPush = 0;
 
 numPanels.forEach((numPanel) => {
   numPanel.addEventListener("click", () => {
@@ -70,6 +71,10 @@ point.addEventListener("click", () => {
 
 plus.addEventListener("click", () => {
   plus.classList.add("click");
+  isMinusPush++;
+  if (isMinusPush === 2) {
+    minusValue();
+  }
   calc = Number(showNumber.textContent);
   isPush = true;
   point.disabled = false;
@@ -79,6 +84,10 @@ plus.addEventListener("click", () => {
 
 minus.addEventListener("click", () => {
   minus.classList.add("click");
+  isMinusPush++;
+  if (isMinusPush === 2) {
+    minusValue();
+  }
   calc = Number(showNumber.textContent);
   isPush = true;
   point.disabled = false;
@@ -101,9 +110,11 @@ function addition() {
     plus.classList.remove("click");
     calc = 0;
     isPush = true;
+    isMinusPush = 0;
   } else {
     showNumber.textContent = "error";
     plus.classList.remove("click");
+    isMinusPush = 0;
   }
 }
 
@@ -114,8 +125,15 @@ function subtraction() {
     minus.classList.remove("click");
     calc = 0;
     isPush = true;
+    isMinusPush = 0;
   } else {
     showNumber.textContent = "error";
     minus.classList.remove("click");
+    isMinusPush = 0;
   }
+}
+
+function minusValue() {
+  showNumber.textContent = "-" + showNumber.textContent;
+  isMinusPush = 0;
 }
