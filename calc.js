@@ -42,6 +42,7 @@ clear.addEventListener("click", () => {
     isPointPush = false;
     point.disabled = false;
     plus.classList.remove("click");
+    minus.classList.remove("click");
   } else {
     showNumber.textContent = "0";
     clear.textContent = "AC";
@@ -76,8 +77,21 @@ plus.addEventListener("click", () => {
   isPointPush = true;
 });
 
+minus.addEventListener("click", () => {
+  minus.classList.add("click");
+  calc = Number(showNumber.textContent);
+  isPush = true;
+  point.disabled = false;
+  countUp = 0;
+  isPointPush = true;
+});
+
 equal.addEventListener("click", () => {
-  addition();
+  if (plus.classList.contains("click")) {
+    addition();
+  } else if (minus.classList.contains("click")) {
+    subtraction();
+  }
 });
 
 function addition() {
@@ -91,12 +105,17 @@ function addition() {
     showNumber.textContent = "error";
     plus.classList.remove("click");
   }
+}
 
-  function subtraction() {
+function subtraction() {
+  if (showNumber.textContent.length < 10) {
     calc -= Number(showNumber.textContent);
     showNumber.textContent = calc;
-    plus.classList.remove("click");
+    minus.classList.remove("click");
     calc = 0;
     isPush = true;
+  } else {
+    showNumber.textContent = "error";
+    minus.classList.remove("click");
   }
 }
