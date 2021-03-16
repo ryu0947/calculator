@@ -14,7 +14,9 @@ let countUp = 0;
 let calc = 0;
 let isPush;
 let isPointPush;
-let isMinusPush = 0;
+let isPlusPush;
+let isMinusPush = true;
+let isCalcPush;
 
 numPanels.forEach((numPanel) => {
   numPanel.addEventListener("click", () => {
@@ -31,6 +33,7 @@ numPanels.forEach((numPanel) => {
     }
     isPush = false;
     isPointPush = false;
+    isMinusPush = false;
   });
 });
 
@@ -38,20 +41,17 @@ clear.addEventListener("click", () => {
   if (clear.textContent === "AC") {
     showNumber.textContent = "0";
     calc = 0;
-    countUp = 0;
-    isPush = false;
-    isPointPush = false;
-    point.disabled = false;
     plus.classList.remove("click");
     minus.classList.remove("click");
   } else {
     showNumber.textContent = "0";
     clear.textContent = "AC";
-    countUp = 0;
-    isPush = false;
-    isPointPush = false;
-    point.disabled = false;
   }
+  countUp = 0;
+  isPush = false;
+  isPointPush = false;
+  point.disabled = false;
+  isCalcPush = false;
 });
 
 point.addEventListener("click", () => {
@@ -71,28 +71,29 @@ point.addEventListener("click", () => {
 
 plus.addEventListener("click", () => {
   plus.classList.add("click");
-  isMinusPush++;
-  if (isMinusPush === 2) {
+  isPush = true;
+  if (isCalcPush) {
     minusValue();
   }
+  if (isPush) {
+    isPlusPush = true;
+    isAnswer();
+  }
   calc = Number(showNumber.textContent);
-  isPush = true;
   point.disabled = false;
   countUp = 0;
   isPointPush = true;
+  minus.classList.remove("click");
 });
 
 minus.addEventListener("click", () => {
   minus.classList.add("click");
-  isMinusPush++;
-  if (isMinusPush === 2) {
-    minusValue();
-  }
-  calc = Number(showNumber.textContent);
   isPush = true;
+  calc = Number(showNumber.textContent);
   point.disabled = false;
   countUp = 0;
   isPointPush = true;
+  plus.classList.remove("click");
 });
 
 equal.addEventListener("click", () => {
@@ -103,6 +104,17 @@ equal.addEventListener("click", () => {
   }
 });
 
+function isAnswer() {
+  if (isPlusPush) {
+    calc += Number(showNumber.textContent);
+    showNumber.textContent = calc;
+    isPlusPush = false;
+  } else if (isMinusPush) {
+    calc -= Number(showNumber.textContent);
+    showNumber.textContent = calc;
+  }
+}
+
 function addition() {
   if (showNumber.textContent.length < 10) {
     calc += Number(showNumber.textContent);
@@ -110,7 +122,7 @@ function addition() {
     plus.classList.remove("click");
     calc = 0;
     isPush = true;
-    isMinusPush = 0;
+    isMinusPush;
   } else {
     showNumber.textContent = "error";
     plus.classList.remove("click");
@@ -125,15 +137,16 @@ function subtraction() {
     minus.classList.remove("click");
     calc = 0;
     isPush = true;
-    isMinusPush = 0;
+    isMinusPush;
   } else {
     showNumber.textContent = "error";
     minus.classList.remove("click");
-    isMinusPush = 0;
+    isMinusPush;
   }
 }
 
 function minusValue() {
   showNumber.textContent = "-" + showNumber.textContent;
-  isMinusPush = 0;
+  isCalcPush = false;
+  isMinusPush = true;
 }
